@@ -24,6 +24,7 @@ const CreateListing = () => {
     offer: false,
     parking: false,
     furnished: false,
+    bachelor: false, // ✅ New field
   });
 
   const [imageUploadError, setImageUploadError] = useState(false);
@@ -32,8 +33,6 @@ const CreateListing = () => {
   const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
-
-  console.log(formData);
 
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
@@ -107,7 +106,8 @@ const CreateListing = () => {
     if (
       e.target.id === "parking" ||
       e.target.id === "furnished" ||
-      e.target.id === "offer"
+      e.target.id === "offer" ||
+      e.target.id === "bachelor" // ✅ Add bachelor here
     ) {
       setFormData({
         ...formData,
@@ -116,9 +116,9 @@ const CreateListing = () => {
     }
 
     if (
-      e.target.type == "number" ||
-      e.target.type == "text" ||
-      e.target.type == "textarea"
+      e.target.type === "number" ||
+      e.target.type === "text" ||
+      e.target.type === "textarea"
     ) {
       setFormData({
         ...formData,
@@ -252,6 +252,16 @@ const CreateListing = () => {
               />
               <span>Offer</span>
             </div>
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                id="bachelor"
+                className="w-5"
+                onChange={handleChange}
+                checked={formData.bachelor}
+              />
+              <span>Bachelor</span>
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-6">
@@ -367,8 +377,10 @@ const CreateListing = () => {
                 </button>
               </div>
             ))}
-          ;
-          <button disabled={loading || uploading} className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+          <button
+            disabled={loading || uploading}
+            className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
+          >
             {loading ? "Creating..." : "Create Listing"}
           </button>
           {error && <p className="text-red-700 text-sm">{error}</p>}
