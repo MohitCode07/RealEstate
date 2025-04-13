@@ -1,26 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function About() {
-  useEffect(() => {
-    // Configure chatbot
-    window.embeddedChatbotConfig = {
-      chatbotId: "pZ9tSWXSlkecay-yK2Izi",
-      domain: "www.chatbase.co",
-    };
-
-    // Load the chatbot script
-    const script = document.createElement("script");
-    script.src = "https://www.chatbase.co/embed.min.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-
-    // Cleanup script
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <div className="max-w-6xl px-4 py-20 mx-auto">
       <h1 className="mb-4 text-3xl font-bold text-slate-800">
@@ -46,6 +26,21 @@ export default function About() {
         should be an exciting and rewarding experience, and we are dedicated to
         making that a reality for each and every one of our clients.
       </p>
+
+      {/* Embedded Chatbot */}
+      <div className="my-12">
+        <h2 className="text-2xl font-semibold text-slate-700 mb-4">
+          🤖 Have questions? Chat with us!
+        </h2>
+        <iframe
+          src="https://www.chatbase.co/chatbot-iframe/rCZdFXfv7cALo2uno02PO"
+          width="100%"
+          style={{ height: "100%", minHeight: "700px" }}
+          frameBorder="0"
+          title="NestFinder Chatbot"
+        ></iframe>
+      </div>
+
       <footer className="mt-8 text-center text-slate-700">
         <p>© 2024 NestFinder. All rights reserved.</p>
       </footer>
