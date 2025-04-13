@@ -11,9 +11,13 @@ const listingSchema = new mongoose.Schema(
     parking: { type: Boolean, required: true },
     type: { type: String, required: true },
     offer: { type: Boolean, required: true },
-    bachelor: { type: Boolean, required: true }, // ✅ Add this line
+    bachelor: { type: Boolean, required: true }, // ✅ NEW
     imageUrls: { type: Array, required: true },
     userRef: { type: String, required: true },
   },
   { timestamps: true }
 );
+
+const Listing = mongoose.model("Listing", listingSchema);
+
+export default Listing;
