@@ -1,26 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function About() {
-  useEffect(() => {
-    // Configure chatbot with the new bot ID
-    window.embeddedChatbotConfig = {
-      chatbotId: "rCZdFXfv7cALo2uno02PO",
-      domain: "www.chatbase.co",
-    };
-
-    // Load the chatbot script
-    const script = document.createElement("script");
-    script.src = "https://www.chatbase.co/embed.min.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-
-    // Cleanup
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <div className="max-w-6xl px-4 py-20 mx-auto">
       <h1 className="mb-4 text-3xl font-bold text-slate-800">
@@ -35,6 +15,16 @@ export default function About() {
       <p className="mb-4 text-slate-700">
         Whether you're searching for a home or looking to list one, NestFinder is your go-to destination to find the perfect match quickly and easily.
       </p>
+
+      {/* Embedded Chatbot Iframe */}
+      <div className="my-8">
+        <iframe
+          src="https://www.chatbase.co/chatbot-iframe/NdNblzLi_glM9SmYa8N9A"
+          width="100%"
+          style={{ height: "100%", minHeight: "700px" }}
+          frameBorder="0"
+        ></iframe>
+      </div>
 
       <footer className="mt-8 text-center text-slate-700">
         <p>© 2024 NestFinder. All rights reserved.</p>
